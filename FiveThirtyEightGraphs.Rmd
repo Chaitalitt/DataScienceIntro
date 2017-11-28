@@ -1,0 +1,34 @@
+---
+title: "FiveThirtyEightGraphs"
+output: html_document
+---
+
+```{r}
+library(fivethirtyeight)
+library(tidyverse)
+```
+```{r}
+str(comic_characters)
+head(comic_characters)
+```
+
+```{r}
+ggplot(data = comic_characters, mapping = aes(x = id)) + geom_density()
+```
+This is a one variable graph. It is a density plot about the identity (id) of the comic book characters.
+
+```{r}
+ggplot(data = comic_characters, mapping = aes(x = id, y = month)) +geom_point()
+```
+A two variable graph that shows the relationship between the names of the comic book characters and their appearances.
+
+```{r}
+ggplot(data = comic_characters, mapping = aes(x = id, y = month, size = appearances)) +geom_point()
+```
+A three variable graph that shows the relation between character identity, the number of appearances, and the month of their appearance. The point size decrease as the number of appearances decrease.
+
+```{r}
+ggplot(data = comic_characters, mapping = aes(x = year, y = count(gsm))) +geom_bar(stat = "identity")
+```
+
+This graph is similar to last graph from the website. It shows the relationship between LGBT characters introduced per year. 

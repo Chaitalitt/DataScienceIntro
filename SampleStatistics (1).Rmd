@@ -1,0 +1,172 @@
+---
+title: "Sample statistics"
+author: "Kim Roth"
+date: "10/4/2017"
+output: html_document
+---
+
+In this activity, we will make sure everyone knows the terms surronding sampling and sample statistics. Additionally we will learn how to compute them in R.
+
+Libaries for today
+```{r}
+library(mosaic)
+library(tidyverse)
+library(gapminder)
+```
+
+Some of these questions you may already know the answer to, if you do not you may look at other resources including your book and an introduction to statistics book of your choice (see https://www.openintro.org or http://moderndive.com/A-appendixA.html#basic-statistical-terms for a free option) 
+
+Give definitions beyond formulas for terms. You do not even need to include the formulas unless desired. Cite your sources if using someone's definition.
+
+
+Samples and population: statistics and parameters
+
+TO THE TEACHER: I TRIED TO MAKE THE GRAPHS BUT I WAS REALLY CONFUSED AND DID NOT KNOW WHAT TO DO. I TRIED VARIOUS THINGS BUT STILL COULDN'T GET THE GRAPH. 
+That's why there are no codes for graphs.
+IT'S NOT THAT I GAVE UP OR DON'T CARE ABOUT THE SUBJECT. 
+I LOVE THIS CLASS AND I CARE MORE ABOUT LEARNING THAN ABOUT GRADES.
+Is it possible to discuss this after you grade it? I didn't want to come before as that would be asking you to help with my assignment and will be unfair to others. 
+
+1. Define the following
+a. Sample - a part of the whole
+b. Population - a huge data from which a statistcal sample is selected
+c. n - number in a sample / sample size www.conceptstew.co.uk/pages/nsamplesize.html
+d. Sample statistic - Any function of observed data, especially one used to estimate the corresponding parameter of the underlying distribution, such as the sample mean, sample variance, etc http://www.dictionary.com/browse/sampling-statistic
+e. Population parameter -  A quantity or statistical measure that, for a given population, is fixed and that is used as the value of a variable in some general distribution or frequency function to make it descriptive of that population: The mean and variance of a population are population parameters. www.dictionary.com/browse/population-parameter
+
+
+Concepts
+2. Why sample? Why not look at the whole population? Looking at the whole population is time consuming and expensive. Easier to control and is more accurate (less errors).
+3. Why do we sample randomly or randomly assign conditions? To avoid bias and gives a fair chance to each data to get chosen.
+
+Practice
+4. For the dataset gapminder, go and find the R documentation in help or by google.
+a. How did they get the sample?
+b. What are the cases? Information about the countries
+c. What's n? 1704
+d. What are the variables? - 6 - country, continent, year, lifeExp, pop, gdpPercap
+c. What is a possible population related to this sample?
+
+Measures of center
+5. Define the following
+a. mean - also known as average, it is the sum of all data divided by the number of data
+b. median - - the middle value in the data when sorted according to asecending order
+c. mode (which is rarely used in statistics, because it isn't a measure of center sometimes) - the value that occurs the most frequently or the value that is extremely common
+
+
+
+Concepts.
+6. Why is the mode not always at the center of the data? 
+Mode has nothing do with the position of the data. In a data set, the second value may be the one that occurs frequently, and that will be the mode. It doesn't depend whether the data is in the middle or not. 
+7. Why have both mean and median? Are they always the same? Why or why not?
+Mean and median are different as they give us different information about the data. Mean gives us the average whereas median gives us the middle value. 
+The mean is a fair representation, however, if influenced by outliers, it might not be as accurate. http://www.dummies.com/education/math/statistics/why-mean-and-median-are-both-important-in-statistical-data/
+In this scenario, the median helps to understand the values for the data.
+Practice
+
+8. For the gapminder data set compute the following for a quantitative variable of your choice that is not year. All commands work like statistic( ~variable, data=dataset) 
+a. mean
+b. median 
+```{r}
+ggplot(data = gapminder, mapping = aes(x = pop)) +geom_histogram()
+```
+9. Which is larger the median or the mean? Make a graph of the variable and write a sentence about why the larger one is larger.
+```{r}
+
+```
+
+Other measures of position: quantiles, quartiles, min and max
+10. Define the following
+a. Quantile/Percentile -  The three points that divide the data set into four equal groups, each group comprising a quarter of the data. (google definition)
+b. First quartile - The middle number between the smallest number and the median of the data set. https://en.wikipedia.org/wiki/Quartile
+c. Thrid quartile - The middle value between the median and the highest value of the data set. https://en.wikipedia.org/wiki/Quartile
+d. Minimum - The lowest value in the data set
+e. Maximum - The highest value in the data set
+
+Concepts
+11. What are the minimum, first quartile, median, third quartile, and maximum in terms of quantiles/percentiles? This set of numbers is called the five number summary. 
+12. What is the difference between a quantile and a percentile?
+
+Practice
+13. Use favstats to compute the five number summary a quantiative variable of your choice (not year)
+```{r}
+
+```
+
+14. Find the 5th percentile and the 95th percentile for the data using qdata, which works like qdata(~variable, p=quantile, data=dataset)
+```{r}
+
+```
+
+
+
+Measures of spread: Range, Standard deviation, Intequarile Range
+15. Define the following
+a. Spread (statistical spread) - Sometimes also called a measure of dispersion, is used to describe the variability in a sample or population. https://statistics.laerd.com/statistical-guides/measures-of-spread-range-quartiles.php
+b. Range - The difference between 2 extremes of a data
+c. Standard deviation - Measure of how spread out numbers are. www.mathsisfun.com/data/standard-deviation.html
+d. Interquartile range - A measure of statistical dispersion, being equal to the difference between 75th and 25th percentiles, or between upper and lower quartiles, IQR = Q3 − Q1 https://en.wikipedia.org/wiki/Interquartile_range
+
+Concepts
+16. Why do we not use range as the usual measure of spread? Range is affected by outliers, and may give an inaccurate data. 
+
+Practice
+17.Compute the range, interquartile range and standard deviation (sd in R) for your variable.
+```{r}
+
+```
+
+Outliers: Detection methods
+
+There are two common simple statistical methods. Note that particular data may have values dictated by the variable that are unusual outside of statistcs (ex. unreasonable blood pressure values) Also there are more complicated statstical methods for some things.
+
+The two methods are data is more than two standard deviations from the mean or more than 1.5 interquatile ranges from the nearest quartile.
+
+
+For your variable use either the minimum or the maximum of the data.
+18. Is your min or max an outlier by being more than two standard deviations from the mean. Note that standard deviations from the mean are calculuated by doing a z-score (data value-mean)/sd
+```{r}
+
+```
+
+19. Is your min or max and outlier by being more than than 1.5  interquatile ranges from the nearest quartile. The easiest way to do this in r is to make a boxplot. Boxplots mark their outliers using this rule by default.
+```{r}
+
+```
+
+
+Linear models. Best fit lines and their friends
+
+20. Define the following
+a. Statistical model - A statistical model is a class of mathematical model, which embodies a set of assumptions concerning the generation of some sample data, and similar data from a larger population. https://en.wikipedia.org/wiki/Statistical_model
+b. Linear - In a straight line
+c. Least squares regression line (the most common type of best fit line) - A statistical method used to determine a line of best fit by minimizing the sum of squares created by a mathematical function. A "square" is determined by squaring the distance between a data point and the regression line. www.investopedia.com/terms/l/least-squares.asp
+d. predictor - An independent variable, the variable that is manipulated to oberve the effect on a dependent variable.
+e. response - The focus of a question in a study or an experiment. www.statisticshowto.com/explanatory-variable/
+f. confounding variables - Variables that the researcher failed to control, or eliminate, damaging the internal validity of an experiment. https://explorable.com/confounding-variables
+g. correlation - Shows how strongly two variables are related
+
+Concepts
+21. Why do we make models? What is the goal? A model is a representation of an idea, an object or even a process or a system that is used to describe and explain phenomena that cannot be experienced directly. https://www.sciencelearn.org.nz/resources/575-scientific-modelling
+It makes information easier to absorb and understand. It makes analysing data easier.
+
+Practice
+22. Pick two of the quantiative variables. Make a scatterplot with a line on it (as we did when learning ggplot, it is the best fit line)
+```{r}
+
+```
+
+23. Now look at the line of best fit. The command for making a best fit line is lm, standing for linear model
+lm(response~predictor, data=dataset).
+```{r}
+
+```
+
+24. Write the equation for the line here. How does it match your scatterplot?
+
+
+25. (OPTIONAL) Using the gampminder data make the best linear model for gdp that you can using multiple variables. How are you telling it is the best?
+```{r}
+
+```
+
